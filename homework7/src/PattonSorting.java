@@ -5,7 +5,7 @@
  * @verison (version)
  */
 
-public class BaseSorting {
+public class PattonSorting {
      
     /**
      * Entry point for sample output.
