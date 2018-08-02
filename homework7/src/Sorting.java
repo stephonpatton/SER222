@@ -9,6 +9,43 @@ import java.util.Arrays;
  */
 public class Sorting 
 {
+	public static void quickSortMid(Comparable[] a) {
+		quickSortMid(a, 0, a.length-1);
+	}
+	
+	@SuppressWarnings("unchecked")
+	private static void quickSortMid(Comparable[] a, int low, int high) {
+		if(low + 10 > high) 
+			insertionSort(a);
+		else {
+			int center = (low + high)/2;
+			if(a[center].compareTo(a[low]) < 0)
+				swap(a, low, center);
+			if(a[high].compareTo(a[low]) < 0) 
+				swap(a, low, high);
+			if(a[high].compareTo(a[center]) < 0)
+				swap(a, center, high);
+			
+			swap(a,center,high-1);
+			Comparable pivot = a[high-1];
+			
+			int i, j;
+			for(i=low, j = high -1; ;) {
+//				while(a[++i].compareTo(pivot) < 0) 
+//					;
+				if(pivot.compareTo(a[--j]) < 0) {
+					if(i>=j)
+						break;
+					swap(a,i,j);
+				}
+			}
+			
+			swap(a,i,high-1);
+			quickSortMid(a, low, i-1);
+			quickSortMid(a, i+1, high);
+		}
+	}
+	
     /**
      * Sorts the specified array of integers using the selection
      * sort algorithm.
@@ -92,6 +129,14 @@ public class Sorting
                     swap(data, scan, scan + 1);
             }
         }
+    }
+    
+    public static Comparable[] mergesort(Comparable[] a) {
+		return null;
+    }
+    
+    public static Comparable[] merge(Comparable[] a, Comparable[] b) {
+    	return null;
     }
 
     /**
@@ -181,6 +226,10 @@ public class Sorting
 		for (index = first; index <= last; index++)
 			data[index] = temp[index];
    }
+	
+	public static void merge(Comparable[] a, Comparable[] b) {
+		
+	}
 
 	/**
 	 * Sorts the specified array of objects using the quick sort algorithm.

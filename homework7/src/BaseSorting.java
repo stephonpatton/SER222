@@ -15,23 +15,27 @@ public class BaseSorting {
     public static void main(String[] args) {
         //Q1
         String[] a = {"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
+//        Sorting.quickSort(a);
         quicksortmid(a);
         assert isSorted(a); //requires assertions enabled.
         show(a);
         
         //Q2
         String[] b = {"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
+//        Sorting.mergeSort(b);
+        
         mergesort(b);
         assert isSorted(b);
         show(b);
     }
     
     public static void quicksortmid(Comparable[] a) {
-        //TODO: implement this.
+    	Sorting.quickSortMid(a);
     }
     
-    public static void mergesort(Comparable[] a) {
-        //TODO: implement this.
+    @SuppressWarnings("unchecked")
+	public static void mergesort(Comparable[] a) {
+       Sorting.mergeSort(a);
     }
     
     /**
@@ -61,7 +65,7 @@ public class BaseSorting {
     }
     
     //See previous method.
-    private static boolean less(Comparable v, Comparable w) {
+    private static boolean less(Comparable<Comparable> v, Comparable w) {
         return v.compareTo(w) < 0;
     }
 }
