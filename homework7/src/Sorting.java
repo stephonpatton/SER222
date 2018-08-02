@@ -134,11 +134,15 @@ public class Sorting
     public static Comparable[] mergesort(Comparable[] a) {
 		return null;
     }
-    
-    public static Comparable[] merge(Comparable[] a, Comparable[] b) {
-    	return null;
-    }
 
+	public static void merge(Comparable[] a, Comparable[] b) {
+		
+	}
+	
+	public static Comparable[] mergesortRec(Comparable[] a) {
+		return null;
+	}
+	
     /**
      * Sorts the specified array of objects using the merge sort
      * algorithm.
@@ -227,9 +231,7 @@ public class Sorting
 			data[index] = temp[index];
    }
 	
-	public static void merge(Comparable[] a, Comparable[] b) {
-		
-	}
+
 
 	/**
 	 * Sorts the specified array of objects using the quick sort algorithm.
