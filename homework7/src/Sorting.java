@@ -249,7 +249,7 @@ public class Sorting
 			while (data[right].compareTo(partitionelement) > 0)
 				right--;
 			
-			// swap the elements
+			// swap the elements/
 			if (left < right)
 				swap(data, left, right);
 		}
