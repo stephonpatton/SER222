@@ -2,7 +2,9 @@
  * LinkedBinarySearchTree implements the BinarySearchTreeADT interface 
  * with links.
  * 
- * @author Lewis and Chase
+ * Completion time: 8 hours
+ * 
+ * @author Stephon Patton, Lewis and Chase
  * @version 4.0
  */
 public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
@@ -309,7 +311,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
     @Override
     public T removeMax() throws EmptyCollectionException 
     {
-        // TODO: May need to implement.
+       return null; // TODO: May need to implement.
     }
 
     /**
@@ -323,7 +325,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
     @Override
     public T findMin() throws EmptyCollectionException 
     {
-        // TODO: May need to implement.
+      return null;  // TODO: May need to implement.
     }
 
     /**
@@ -338,11 +340,15 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
     @Override
     public T findMax() throws EmptyCollectionException 
     {
-        // TODO: May need to implement.
+       return null; // TODO: May need to implement.
     }
 
-    // TODO: Implement find.
-    // TODO: Implement contains.
+    public T find(T targetElement) {
+    	if(isEmpty())
+    		throw new EmptyCollectionException("LinkedBST");
+    	BinaryTreeNode<T> result = findNode(targetElement, root);
+    	return result.getElement();
+    }
     
     /**
      * Returns the left subtree of the root of this tree.
@@ -352,7 +358,7 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
     @Override
     public LinkedBinarySearchTree<T> getLeft()
     { 
-        // TODO: May need to implement.
+        return null;
     }
     
     /**
@@ -363,7 +369,8 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
     @Override
     public LinkedBinarySearchTree<T> getRight()
     {
-        // TODO: May need to implement.
+        return null;
+        
     }
     
     /**
@@ -373,8 +380,24 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T>
      * @param targetElement the element being sought in the tree
      * @param next the tree node to begin searching on
      */
-    private BinaryTreeNode<T> findNode(T targetElement, BinaryTreeNode<T> next) 
+    @SuppressWarnings("unchecked")
+	private BinaryTreeNode<T> findNode(T targetElement, BinaryTreeNode<T> next) 
     {
-        // TODO: May need to implement.
+        if(isEmpty())
+        	return null;
+        
+        Comparable<T> temp = (Comparable<T>) targetElement;
+        
+        if(temp.compareTo(next.getElement()) == 0)
+        	return next;
+        else {
+        	BinaryTreeNode<T> tempNode;
+        	if(temp.compareTo(next.getElement()) < 0)
+        		tempNode = findNode(targetElement,next.getLeft());
+        	else {
+        		tempNode = findNode(targetElement, next.getRight());
+        	}
+        	return tempNode;
+        }
     }
 }

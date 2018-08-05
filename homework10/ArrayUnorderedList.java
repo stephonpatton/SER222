@@ -1,7 +1,9 @@
 /**
  * ArrayUnorderedList represents an array implementation of an unordered list.
  *
- * @author Lewis and Chase
+ * Completion time: 8 hours
+ * 
+ * @author Stephon Patton, Lewis and Chase
  * @version 4.0
  */
 public class ArrayUnorderedList<T> extends ArrayList<T> 
@@ -33,7 +35,15 @@ public class ArrayUnorderedList<T> extends ArrayList<T>
     @Override
     public void addToFront(T element)
     {
-        // TODO: Implement this.
+        if (size() == list.length)
+            expandCapacity();
+        
+        for(int i = rear; i > 0; i--) {
+        		list[i] = list[i-1];
+        }
+        list[0] = element;
+        rear++;
+        modCount++;
     }
 
     /**
@@ -44,7 +54,13 @@ public class ArrayUnorderedList<T> extends ArrayList<T>
     @Override
     public void addToRear(T element)
     {
-        // TODO: Implement this.
+        if (size() == list.length)
+            expandCapacity();
+        else {
+        	list[rear] = element;
+        	rear++;
+        	modCount++;
+        }
     }
 
     /**

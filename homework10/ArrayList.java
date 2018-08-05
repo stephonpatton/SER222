@@ -5,7 +5,9 @@ import java.util.*;
  * the list is kept at array index 0. This class will be extended
  * to create a specific kind of list.
  *
- * @author Lewis and Chase
+ * Completion time: 8 hours
+ * 
+ * @author Stephon Patton, Lewis and Chase
  * @version 4.0
  */
 public abstract class ArrayList<T> implements ListADT<T>, Iterable<T>
@@ -56,7 +58,17 @@ public abstract class ArrayList<T> implements ListADT<T>, Iterable<T>
     @Override
     public T removeLast() throws EmptyCollectionException
     {
-        //TODO: Implement this.
+    	if(isEmpty()) 
+    		throw new EmptyCollectionException("ArrayList");
+    	else {
+    		T result = list[rear];
+    		
+    		rear--;
+    		
+    		list[rear] = null;
+    		modCount++;
+    		return result;
+    	}
     }
 
     /**
@@ -66,10 +78,22 @@ public abstract class ArrayList<T> implements ListADT<T>, Iterable<T>
      * @throws EmptyCollectionException if the element is not in the list
      */
     @Override
-    public T removeFirst() throws EmptyCollectionException
-    {
-        //TODO: Implement this.
-    }
+	public T removeFirst() throws EmptyCollectionException {	
+    	if(isEmpty())
+    		throw new EmptyCollectionException("Array List");
+    	else {
+    		T result = list[0]; //gets first element
+    		for(int i = 0; i < rear - 1; i++) {
+    			list[i] = list[i+1];
+    		}
+    		
+    		rear--;
+    		list[rear] = null;
+    		modCount++;
+    		
+    		return result;
+    	}
+	}
 
     /**
      * Removes and returns the specified element.
