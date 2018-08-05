@@ -1,8 +1,11 @@
 /**
  * Implements various sorting algorithms.
  * 
- * @author (your name), Acuna, Sedgewick
- * @verison (version)
+ * Completion Time: 5 hours
+ * 
+ * 
+ * @author Stephon Patton, Acuna, Sedgewick
+ * @verison 1.0
  */
 
 public class PattonSorting {

@@ -4,7 +4,9 @@ import java.util.Arrays;
  * Sorting demonstrates sorting and searching on an array 
  * of objects.
  *
- * @author Lewis and Chase
+ *Completion time: 5 hours
+ *
+ * @author Stephon Patton, Lewis and Chase
  * @version 4.0 
  */
 public class Sorting 
@@ -31,8 +33,6 @@ public class Sorting
 			
 			int i, j;
 			for(i=low, j = high -1; ;) {
-//				while(a[++i].compareTo(pivot) < 0) 
-//					;
 				if(pivot.compareTo(a[--j]) < 0) {
 					if(i>=j)
 						break;
@@ -132,15 +132,83 @@ public class Sorting
     }
     
     public static Comparable[] mergesort(Comparable[] a) {
-		return null;
+    	if(a.length < 2)
+    		return a;
+    	int middle = a.length/2;
+    	Comparable[] left = new Comparable[middle];
+    	Comparable[] right = new Comparable[a.length-middle];
+    	
+    	for(int i = 0; i < middle; i++) 
+    		left[i] = a[i];
+    	for(int i = middle, j=0; i<a.length; i++, j++) 
+    		right[j] = a[i];
+    	left = mergesort(left);
+    	right = mergesort(right);
+    	
+    	a = merge(left,right);
+    	return a;
     }
 
-	public static void merge(Comparable[] a, Comparable[] b) {
+	public static Comparable[] merge(Comparable[] a, Comparable[] b) {
+		Comparable[] result = new Comparable[a.length + b.length];
 		
+		int aCounter = 0;
+		int bCounter = 0;
+		int resultCounter = 0;
+		
+		while(aCounter < a.length || bCounter < b.length) {
+			if(aCounter < a.length && bCounter < b.length) {
+				if(((Comparable) a[aCounter]).compareTo(b[bCounter]) < 0 ) {
+					result[resultCounter] = a[aCounter];
+					resultCounter++;
+					aCounter++;
+				}
+				else if(((Comparable) a[aCounter]).compareTo(b[bCounter]) > 0) {
+					result[resultCounter] = b[bCounter];
+					resultCounter++;
+					bCounter++;
+				} else {
+					result[resultCounter] = a[aCounter];
+					resultCounter++;
+					aCounter++;
+					
+					result[resultCounter] = b[bCounter];
+					resultCounter++;
+					bCounter++;
+				}
+			}
+			else if(aCounter<a.length && bCounter >= b.length) {
+				result[resultCounter] = a[aCounter];
+				resultCounter++;
+				aCounter++;
+			}
+			else if(bCounter < b.length && aCounter>= a.length) {
+				result[resultCounter] = b[bCounter];
+				resultCounter++;
+				bCounter++;
+			}
+		}
+		
+		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static Comparable[] mergesortRec(Comparable[] a) {
-		return null;
+		int lastIndex = a.length-1;
+		int firstIndex = a.length - a.length;
+		
+	    //base case: if length of array is 1
+	    if (a[0] == a[a.length-1])
+	        return a;
+	
+	    //split the array
+	    int mid = (firstIndex + lastIndex)/2;
+
+	    mergesortRec(a);
+	    mergesortRec(a);
+	    merge(a, firstIndex, mid+1,lastIndex);
+	    
+		return a;
 	}
 	
     /**
